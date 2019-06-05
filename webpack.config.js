@@ -36,6 +36,12 @@ export default (env, argv) => {
       filename: '[name].js',
       chunkFilename: '[name].[id].js',
     },
+    resolve: {
+      alias: {
+        'react': 'preact/compat',
+        'react-dom': 'preact/compat',
+      },
+    },
     module: {
       rules: [
         {
