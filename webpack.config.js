@@ -1,9 +1,9 @@
-import path from 'path'
+const path = require('path')
 
-import CleanWebpackPlugin from 'clean-webpack-plugin'
-import CopyWebpackPlugin from 'copy-webpack-plugin'
-import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 export default (env, argv) => {
   const mode = argv && argv.mode || 'development'
