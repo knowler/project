@@ -5,6 +5,7 @@
   "private": true,
   "author": "Nathan Knowler <nathan@knowler.me>",
   "license": "MIT",
+  "browserslist": ["defaults"],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
