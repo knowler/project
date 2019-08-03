@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = (env, argv) => {
   const mode = argv && argv.mode || 'development'
@@ -48,6 +49,14 @@ module.exports = (env, argv) => {
           exclude: /node_modules/,
           use: ['cache-loader', 'babel-loader'],
         },
+        {
+          test: /\.css$/,
+          use: [
+            mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+          ],
+        },
       ],
     },
     plugins: [
@@ -56,6 +65,7 @@ module.exports = (env, argv) => {
         'sw.js',
         'manifest.json',
       ]),
+      new MiniCssExtractPlugin(),
       new HtmlWebpackPlugin({ template: 'index.html' }),
       new FriendlyErrorsWebpackPlugin(),
     ],
