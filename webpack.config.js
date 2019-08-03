@@ -54,6 +54,7 @@ module.exports = (env, argv) => {
           test: /\.css$/,
           use: [
             mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'cache-loader',
             'css-loader',
             'postcss-loader',
           ],
