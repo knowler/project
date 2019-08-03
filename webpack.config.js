@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { GenerateSW } = require('workbox-webpack-plugin')
 
 module.exports = (env, argv) => {
   const mode = argv && argv.mode || 'development'
@@ -60,14 +61,14 @@ module.exports = (env, argv) => {
       ],
     },
     plugins: [
+      new FriendlyErrorsWebpackPlugin(),
       new CleanWebpackPlugin(),
-      new CopyWebpackPlugin([
-        'sw.js',
-        'manifest.json',
-      ]),
+      new CopyWebpackPlugin(['manifest.json']),
       new MiniCssExtractPlugin(),
       new HtmlWebpackPlugin({ template: 'index.html' }),
-      new FriendlyErrorsWebpackPlugin(),
+      new GenerateSW({
+        swDest: 'sw.js',
+      }),
     ],
   }
 }
