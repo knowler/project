@@ -46,7 +46,7 @@ module.exports = (env, argv) => {
         {
           test: /\.jsx?/,
           exclude: /node_modules/,
-          use: 'babel-loader',
+          use: ['cache-loader', 'babel-loader'],
         },
       ],
     },
