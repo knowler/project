@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-export default (env, argv) => {
+module.exports = (env, argv) => {
   const mode = argv && argv.mode || 'development'
 
   const stats = {
