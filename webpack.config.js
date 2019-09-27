@@ -1,14 +1,14 @@
-const path = require('path')
+const path = require('path');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { GenerateSW } = require('workbox-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 module.exports = (env, argv) => {
-  const mode = argv && argv.mode || 'development'
+  const mode = (argv && argv.mode) || 'development';
 
   const stats = {
     hash: false,
@@ -23,7 +23,7 @@ module.exports = (env, argv) => {
     reasons: false,
     source: false,
     publicPath: false,
-  }
+  };
 
   return {
     mode,
@@ -53,7 +53,9 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/,
           use: [
-            mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+            mode === 'development'
+              ? 'style-loader'
+              : MiniCssExtractPlugin.loader,
             'cache-loader',
             'css-loader',
             'postcss-loader',
@@ -71,5 +73,5 @@ module.exports = (env, argv) => {
         swDest: 'sw.js',
       }),
     ],
-  }
-}
+  };
+};
