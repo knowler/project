@@ -5,7 +5,9 @@
   "private": true,
   "author": "Nathan Knowler <nathan@knowler.me>",
   "license": "MIT",
-  "browserslist": ["defaults"],
+  "browserslist": [
+    "defaults"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
@@ -14,6 +16,7 @@
   "scripts": {
     "build": "webpack --mode production --progress",
     "lint": "eslint src/**/*.js",
+    "format": "prettier --write **/*.js",
     "release": "np",
     "start": "webpack-dev-server --hot"
   },
@@ -36,6 +39,7 @@
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
+    "prettier": "^1.18.2",
     "style-loader": "^0.23.1",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
